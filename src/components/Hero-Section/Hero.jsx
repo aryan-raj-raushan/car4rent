@@ -37,7 +37,7 @@ const Hero = () => {
 
   return (
     <>
-      <section id="home" className="hero-section h-[97vh]">
+      <section id="home" className="hero-section h-[74vh]">
         <div className="container max-w-screen-xl !my-0 !mx-auto py-0 px-1">
           <img
             className="absolute top-0 right-0 hidden md:block z-0"
@@ -86,7 +86,7 @@ const Hero = () => {
         {/* page up */}
         <div
           onClick={scrollToTop}
-          className={`scroll-up fixed bottom-10 right-10 flex items-center justify-center bg-orange-500 border-4 border-white w-12 h-12 text-white text-2xl font-bold rounded-full cursor-pointer transition duration-300 ${
+          className={`scroll-up fixed bottom-10 right-10 flex items-center justify-center bg-orange-500 border-4 border-white w-12 h-12 text-white text-2xl font-bold rounded-full cursor-pointer transition duration-300 z-50 ${
             goUp ? "block" : "hidden"
           }`}
         >
