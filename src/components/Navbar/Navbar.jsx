@@ -106,7 +106,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <div className="navbar__buttons flex gap-10 md:gap-6 text-lg items-center">
+          <div className="navbar__buttons hidden lg:flex gap-10 md:gap-6 text-lg items-center">
             <Link className="text-black hover:text-orange" to="/">
               Sign In
             </Link>

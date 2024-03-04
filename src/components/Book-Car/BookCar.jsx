@@ -38,6 +38,9 @@ const BookCar = () => {
     setModal,
     imgUrl,
   } = useBookCarHook();
+
+   const [a, setA] = useState("a")
+
   return (
     <>
       <section

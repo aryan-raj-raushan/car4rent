@@ -51,7 +51,7 @@ function ChooseUs() {
                     <h4 className="text-xl lg:text-2xl font-bold">
                       Cross Country Drive
                     </h4>
-                    <p className="text-sm lg:text-base text-gray-500 font-rubik font-normal">
+                    <p className="text-sm lg:text-base lg:leading-tight text-gray-500 font-rubik font-normal">
                       Take your driving experience to the next level with our
                       top-notch vehicles for your cross-country adventures.
                     </p>
@@ -63,7 +63,7 @@ function ChooseUs() {
                     <h4 className="text-xl lg:text-2xl font-bold">
                       All Inclusive Pricing
                     </h4>
-                    <p className="text-sm lg:text-base text-gray-500 font-rubik font-normal leading-tight">
+                    <p className="text-sm lg:text-base lg:leading-tight text-gray-500 font-rubik font-normal leading-tight">
                       Get everything you need in one convenient, transparent
                       price with our all-inclusive pricing policy.
                     </p>
@@ -75,7 +75,7 @@ function ChooseUs() {
                     <h4 className="text-xl lg:text-2xl font-bold">
                       No Hidden Charges
                     </h4>
-                    <p className="text-sm lg:text-base text-gray-500 font-rubik font-normal">
+                    <p className="text-sm lg:text-base lg:leading-tight text-gray-500 font-rubik font-normal">
                       Enjoy peace of mind with our no hidden charges policy. We
                       believe in transparent and honest pricing.
                     </p>
