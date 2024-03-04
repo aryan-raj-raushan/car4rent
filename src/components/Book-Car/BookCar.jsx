@@ -39,8 +39,6 @@ const BookCar = () => {
     imgUrl,
   } = useBookCarHook();
 
-   const [a, setA] = useState("a")
-
   return (
     <>
       <section

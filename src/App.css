@@ -54,8 +54,17 @@ body {
 .bg-choose-us {
   background-image: url("./images//chooseUs/bg.png");
 }
-
-
+.bg-faq-section {
+  background-image: url("./images/faq/car.png");
+}
+.bg-download-banner {
+  background-image: url("./images//download/download-banner.png");
+}
+@media (max-width: 768px) {
+  .bg-download-banner {
+    background-image: none;
+  }
+}
 .loader {
   width: 48px;
   height: 48px;
