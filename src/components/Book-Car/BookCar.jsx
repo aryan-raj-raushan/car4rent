@@ -22,21 +22,19 @@ const BookCar = () => {
     <>
       <section
         id="booking-section"
-        className="book-section relative bg-transparent "
+        className="book-section relative bg-transparent px-4 sm:px-10"
       >
         {/* <!-- overlay --> */}
         <div
           onClick={handleModal}
           className={`modal-overlay ${
-            modal
-              ? "active-modal !opacity-100 !flex"
-              : "hidden"
+            modal ? "active-modal !opacity-100 !flex" : "hidden"
           } fixed w-full h-full bg-black bg-opacity-30 top-0 right-0 opacity-0 !z-50 overflow-hidden`}
         ></div>
 
         <div className="Container">
-          <div className="book-content mx-auto mt-0 mb-24">
-            <div className="book-content__box bg-white w-full h-auto pt-10 pb-12 pl-6 pr-6 sm:pr-12 sm:pl-14 shadow-lg drop-shadow-md rounded-md relative z-40 text-black flex flex-col bg-book-content-box bg-cover bg-center bg-no-repeat">
+          <div className="book-content mx-auto my-16 lg:my-0 lg:mb-24">
+            <div className="book-content__box bg-white w-full h-auto pt-8 sm:pt-10 pb-12 pl-6 pr-6 sm:pr-12 sm:pl-14 shadow-lg drop-shadow-md rounded-md relative z-40 text-black flex flex-col bg-book-content-box bg-cover bg-center bg-no-repeat">
               <h2 className="text-2xl font-bold mb-7">Book a car</h2>
               {errorMessage && (
                 <div className="error-message bg-red-100 border border-red-400 text-red-700 px-6 py-3 mb-6 flex items-center justify-between shadow-md rounded">
