@@ -52,6 +52,7 @@ const useBookCarHook = () => {
     city: "",
     zipcode: "",
   });
+  const [modalErrorMsg, setModalErrorMsg] = useState("");
 
   const handleModalChange = (e) => {
     const { name, value } = e.target;
@@ -75,17 +76,16 @@ const useBookCarHook = () => {
       (value) => !value.trim()
     );
     if (isAnyFieldEmpty) {
-      setErrorMessage("Please fill in all required fields.");
+      setModalErrorMsg("Please fill in all required fields.");
       return false;
     }
 
     // Check if age is greater than 18
     if (modalFormData.age < 18) {
-      setErrorMessage("You must be at least 18 years old to book.");
+      setModalErrorMsg("You must be at least 18 years old to book.");
       return false;
     }
-
-    setErrorMessage(""); // Clear error message if no errors
+    setModalErrorMsg(""); // Clear error message if no errors
     return true;
   };
 
@@ -102,6 +102,7 @@ const useBookCarHook = () => {
     handleModalChange,
     confirmBooking,
     modalFormData,
+    modalErrorMsg,
   };
 };
 

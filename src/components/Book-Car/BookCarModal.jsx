@@ -9,13 +9,19 @@ import {
   modalFormFields,
   carImages,
 } from "../../constant/BookCarConst";
-import useBookCarHook from "./useBookCarHook";
 
-const BookCarModal = ({ modal, data, submit, handleModal }) => {
+const BookCarModal = ({
+  modal,
+  data,
+  submit,
+  handleModal,
+  errorMessage,
+  handleChange,
+  modalData,
+}) => {
   const { carType, pickUp, dropTime, pickTime, dropOff } = data;
   const imgUrl = carType && carImages[carType];
   const details = detailsArray(pickTime, dropTime, pickUp, dropOff);
-  const { handleModalChange, modalFormData, errorMessage } = useBookCarHook();
   return (
     <div
       className={`booking-modal ${
@@ -86,7 +92,7 @@ const BookCarModal = ({ modal, data, submit, handleModal }) => {
           Personal Information
         </h4>
         <form className="info-form grid grid-cols-2 gap-4" onSubmit={submit}>
-          {modalFormFields(modalFormData).map((field) => (
+          {modalFormFields(modalData).map((field) => (
             <div
               className="modal-form__group flex flex-col gap-1"
               key={field.id}
@@ -101,8 +107,8 @@ const BookCarModal = ({ modal, data, submit, handleModal }) => {
                 type={field.type}
                 id={field.id}
                 name={field.name}
-                value={modalFormData[field.name]}
-                onChange={handleModalChange}
+                value={modalData[field.name]}
+                onChange={handleChange}
                 className="text-sm border border-gray-300 rounded-md py-3 px-4 outline-none text-gray-600 no-spinner scroll"
                 placeholder={field.placeholder}
                 onWheel={(e) => e.target.blur()}

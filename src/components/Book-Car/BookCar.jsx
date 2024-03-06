@@ -13,6 +13,9 @@ const BookCar = () => {
     formData,
     handleChange,
     confirmBooking,
+    modalErrorMsg,
+    handleModalChange,
+    modalFormData
   } = useBookCarHook();
 
   return (
@@ -67,6 +70,9 @@ const BookCar = () => {
         submit={confirmBooking}
         data={formData}
         handleModal={handleModal}
+        errorMessage={modalErrorMsg}
+        modalData={modalFormData}
+        handleChange={handleModalChange}
       />
     </>
   );
