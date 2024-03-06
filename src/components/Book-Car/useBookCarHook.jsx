@@ -1,187 +1,107 @@
-import { useEffect, useState } from "react";
-import CarAudi from "../../images/cars-big/audia1.jpg";
-import CarGolf from "../../images/cars-big/golf6.jpg";
-import CarToyota from "../../images/cars-big/toyotacamry.jpg";
-import CarBmw from "../../images/cars-big/bmw320.jpg";
-import CarMercedes from "../../images/cars-big/benz.jpg";
-import CarPassat from "../../images/cars-big/passatcc.jpg";
+import { useState } from "react";
 
 const useBookCarHook = () => {
-  const [modal, setModal] = useState(false); // class - active-modal
+  const [modal, setModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  // booking car
-  const [carType, setCarType] = useState("");
-  const [pickUp, setPickUp] = useState("");
-  const [dropOff, setDropOff] = useState("");
-  const [pickTime, setPickTime] = useState("");
-  const [dropTime, setDropTime] = useState("");
-  const [carImg, setCarImg] = useState("");
+  const [formData, setFormData] = useState({
+    carType: "",
+    pickUp: "",
+    dropOff: "",
+    pickTime: "",
+    dropTime: "",
+  });
 
-  // modal infos
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [zipcode, setZipCode] = useState("");
-
-  // taking value of modal inputs
-  const handleName = (e) => {
-    setName(e.target.value);
+  const handleChange = (e, field) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: e.target.value,
+    }));
+  };
+  
+  const handleModal = () => {
+    setModal(!modal);
+    document.body.style.overflow = modal ? "auto" : "hidden";
   };
 
-  const handleLastName = (e) => {
-    setLastName(e.target.value);
-  };
-
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
-  };
-
-  const handleAge = (e) => {
-    setAge(e.target.value);
-  };
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleAddress = (e) => {
-    setAddress(e.target.value);
-  };
-
-  const handleCity = (e) => {
-    setCity(e.target.value);
-  };
-
-  const handleZip = (e) => {
-    setZipCode(e.target.value);
-  };
-
-  // open modal when all inputs are fulfilled
-  const openModal = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const errorMsg = document.querySelector(".error-message");
-    if (
-      pickUp === "" ||
-      dropOff === "" ||
-      pickTime === "" ||
-      dropTime === "" ||
-      carType === ""
-    ) {
-      errorMsg.style.display = "flex";
-    } else {
-      setModal(!modal);
-      const modalDiv = document.querySelector(".booking-modal");
-      modalDiv.scroll(0, 0);
-      errorMsg.style.display = "none";
+    if (Object.values(formData).some((value) => value === "")) {
+      setErrorMessage("Please fill in all required fields.");
+      return;
     }
+    handleModal();
+    console.log("Form data:", formData);
+    setErrorMessage("");
   };
 
-  // disable page scroll when modal is displayed
-  useEffect(() => {
-    if (modal === true) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [modal]);
+  const hideMessage = () => {
+    setErrorMessage("");
+  };
 
-  // confirm modal booking
+  /* -------------------------------------------------------------------------- */
+  /*                      Modal                                                 */
+  /* -------------------------------------------------------------------------- */
+  const [modalFormData, setModalFormData] = useState({
+    name: "",
+    lastName: "",
+    phone: "",
+    age: "",
+    email: "",
+    address: "",
+    city: "",
+    zipcode: "",
+  });
+
+  const handleModalChange = (e) => {
+    const { name, value } = e.target;
+    setModalFormData({
+      ...modalFormData,
+      [name]: value,
+    });
+  };
+
   const confirmBooking = (e) => {
     e.preventDefault();
-    setModal(!modal);
-    const doneMsg = document.querySelector(".booking-done");
-    doneMsg.style.display = "flex";
+    const isValid = validateForm();
+    if (isValid) {
+      console.log("Booking confirmed:", modalFormData);
+    }
   };
 
-  // taking value of booking inputs
-  const handleCar = (e) => {
-    setCarType(e.target.value);
-    setCarImg(e.target.value);
+  const validateForm = () => {
+    // Check if all fields are filled
+    const isAnyFieldEmpty = Object.values(modalFormData).some(
+      (value) => !value.trim()
+    );
+    if (isAnyFieldEmpty) {
+      setErrorMessage("Please fill in all required fields.");
+      return false;
+    }
+
+    // Check if age is greater than 18
+    if (modalFormData.age < 18) {
+      setErrorMessage("You must be at least 18 years old to book.");
+      return false;
+    }
+
+    setErrorMessage(""); // Clear error message if no errors
+    return true;
   };
 
-  const handlePick = (e) => {
-    setPickUp(e.target.value);
-  };
-
-  const handleDrop = (e) => {
-    setDropOff(e.target.value);
-  };
-
-  const handlePickTime = (e) => {
-    setPickTime(e.target.value);
-  };
-
-  const handleDropTime = (e) => {
-    setDropTime(e.target.value);
-  };
-
-  // based on value name show car img
-  let imgUrl;
-  switch (carImg) {
-    case "Audi A1 S-Line":
-      imgUrl = CarAudi;
-      break;
-    case "VW Golf 6":
-      imgUrl = CarGolf;
-      break;
-    case "Toyota Camry":
-      imgUrl = CarToyota;
-      break;
-    case "BMW 320 ModernLine":
-      imgUrl = CarBmw;
-      break;
-    case "Mercedes-Benz GLK":
-      imgUrl = CarMercedes;
-      break;
-    case "VW Passat CC":
-      imgUrl = CarPassat;
-      break;
-    default:
-      imgUrl = "";
-  }
-
-  // hide message
-  const hideMessage = () => {
-    const doneMsg = document.querySelector(".booking-done");
-    doneMsg.style.display = "none";
-  };
   return {
-    openModal,
     modal,
     hideMessage,
-    carType,
-    handleCar,
-    pickUp,
-    handleAddress,
-    handlePick,
-    handleDrop,
-    handleDropTime,
-    handlePickTime,
-    confirmBooking,
-    handleZip,
-    handleEmail,
-    handleAge,
-    handleLastName,
-    handleName,
-    handlePhone,
-    handleCity,
-    name,
-    email,
-    phone,
-    age,
-    city,
-    zipcode,
-    lastName,
-    address,
-    dropOff,
-    pickTime,
-    dropTime,
+    handleModal,
     setModal,
-    imgUrl
+    setErrorMessage,
+    errorMessage,
+    formData,
+    handleChange,
+    handleSubmit,
+    handleModalChange,
+    confirmBooking,
+    modalFormData,
   };
 };
 
