@@ -1,27 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const Header = ({ heading, paragraph, linkName, linkUrl = "/" }) => {
+const Header = ({ heading, paragraph }) => {
   return (
-    <div className="pb-5">
-      <div className="flex justify-center">
-        <img
-          alt=""
-          className="h-14 w-14"
-          src="https://ik.imagekit.io/pibjyepn7p9/Lilac_Navy_Simple_Line_Business_Logo_CGktk8RHK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1649962071315"
-        />
-      </div>
-      <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+    <div className="pb-3">
+      <div className="flex justify-center"></div>
+      <h2 className="mt-2 text-center text-4xl font-semibold text-orange-500 uppercase">
         {heading}
       </h2>
-      <p className="text-center text-sm text-gray-600 mt-5">
-        {paragraph}{" "}
-        <Link
-          to={linkUrl}
-          className="font-medium text-purple-600 hover:text-purple-500"
-        >
-          {linkName}
-        </Link>
+      <p className="text-center text-sm font-normal text-white mt-2">
+        {paragraph}
       </p>
     </div>
   );

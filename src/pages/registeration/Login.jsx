@@ -6,6 +6,7 @@ import { loginFields } from "../../constant/RegisterationConst";
 import useRegisterationHook from "./useRegisterationHook";
 import GoogleLogo from "../../assets/logo/google-logo.png";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -27,7 +28,7 @@ const Login = () => {
           Wait...
         </div>
       ) : (
-        <form className="space-y-6">
+        <form className="space-y-4">
           <div className="space-y-2">
             {loginFields.map((field) => (
               <Input
@@ -52,7 +53,7 @@ const Login = () => {
             disabled={!isLoginValid}
           />
           <button
-            className="flex items-center justify-center w-full border py-1 rounded-lg"
+            className="flex items-center justify-center w-full border py-1 rounded-lg "
             onClick={handleGoogleLogin}
             style={{ backgroundColor: "white", color: "black" }}
           >
@@ -63,6 +64,13 @@ const Login = () => {
               style={{ width: "20px", marginLeft: "6px" }}
             />
           </button>
+          <div className="font-medium text-gray-300 text-xs text-center">
+            Don't have an account?
+            <Link to={"/signup"} className="font-semibold text-orange-400 ml-1">
+              {" "}
+              Sign up for free!
+            </Link>
+          </div>
         </form>
       )}
     </>
