@@ -1,9 +1,9 @@
-import CarAudi from "../images/cars-big/audia1.jpg";
-import CarGolf from "../images/cars-big/golf6.jpg";
-import CarToyota from "../images/cars-big/toyotacamry.jpg";
-import CarBmw from "../images/cars-big/bmw320.jpg";
-import CarMercedes from "../images/cars-big/benz.jpg";
-import CarPassat from "../images/cars-big/passatcc.jpg";
+import CarAudi from "../assets/images/cars-big/audia1.jpg";
+import CarGolf from "../assets/images/cars-big/golf6.jpg";
+import CarToyota from "../assets/images/cars-big/toyotacamry.jpg";
+import CarBmw from "../assets/images/cars-big/bmw320.jpg";
+import CarMercedes from "../assets/images/cars-big/benz.jpg";
+import CarPassat from "../assets/images/cars-big/passatcc.jpg";
 import {
   IconCar,
   IconMapPinFilled,

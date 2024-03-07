@@ -1,5 +1,5 @@
-import Img1 from "../../images/download/appstore.svg";
-import Img2 from "../../images/download/googleapp.svg";
+import Img1 from "../../assets/images/download/appstore.svg";
+import Img2 from "../../assets/images/download/googleapp.svg";
 
 const Download = () => {
   return (

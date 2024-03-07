@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../../images/logo/logo.png";
+import Logo from "../../assets/logo/logo.png";
 import { useState } from "react";
 import { IconMenu2 } from "@tabler/icons-react";
 import NavbarMob from "./NavbarMob";
@@ -44,12 +44,12 @@ const Navbar = () => {
 
           {/* SignIn & Registration */}
           <div className="navbar__buttons hidden sm:flex gap-4 lg:gap-6 text-lg items-center sm:w-full lg:w-auto justify-end mr-5 xl:mr-0">
-            <Link className="text-black hover:text-orange" to="/">
+            <Link className="text-black hover:text-orange" to="/login">
               Sign In
             </Link>
             <Link
               className="text-white bg-orange-500 px-6 py-3 rounded-md shadow-md hover:bg-orange-600 transition-all duration-300"
-              to="/"
+              to="/signup"
             >
               Register
             </Link>

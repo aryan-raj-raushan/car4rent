@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import BgShape from "../../images/hero/hero-bg.png";
-import HeroCar from "../../images/hero/main-car.png";
+import BgShape from "../../assets/images/hero/hero-bg.png";
+import HeroCar from "../../assets/images/hero/main-car.png";
 import { IconChevronRight, IconCircleCheck } from "@tabler/icons-react";
 import useHeroHook from "./useHeroHook";
 

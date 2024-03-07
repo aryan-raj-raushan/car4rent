@@ -1,6 +1,6 @@
-import SelectCar from "../images/plan/icon1.png";
-import Contact from "../images/plan/icon2.png";
-import Drive from "../images/plan/icon3.png";
+import SelectCar from "../assets/images/plan/icon1.png";
+import Contact from "../assets/images/plan/icon2.png";
+import Drive from "../assets/images/plan/icon3.png";
 
 export const boxesData = [
   {
