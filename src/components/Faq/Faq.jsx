@@ -18,9 +18,6 @@ const Faq = () => {
     return activeQ === id ? "bg-orange-600 text-white shadow-xl" : "";
   };
 
-  // max-h-[20rem] md:max-h-[30rem] lg:max-h-[55rem] overflow-hidden transition duration-400 ease-in-out
-  // max-h-0 overflow-hidden transition duration-400 ease-in-out
-
   return (
     <>
       <section

@@ -54,8 +54,18 @@ body {
 .bg-book-content-box {
   background-image: url("./assets/images/book-car/book-bg.png");
 }
-.bg-choose-us {
+.choose-section {
   background-image: url("./assets/images/chooseUs/bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: -35px 100px;
+}
+
+@media (min-width: 1024px) {
+  .choose-section {
+    background-position: -225px 255px;
+    background-size: cover;
+  }
 }
 .bg-faq-section {
   background-image: url("./assets/images/faq/car.png");
@@ -97,4 +107,3 @@ body {
   -webkit-appearance: none;
   margin: 0;
 }
-/* check */

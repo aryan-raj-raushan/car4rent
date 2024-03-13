@@ -34,7 +34,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/aryan-raj-raushan"
+                  href="https://github.com/aryan-raj-raushan/car4rent"
                   target="_blank"
                   rel="noreferrer"
                   className="no-underline transition-all duration-200 hover:text-orange-600 flex items-center gap-2 justify-center sm:justify-start"
