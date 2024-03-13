@@ -2,7 +2,7 @@
 import Header from "./Header";
 import SignUp from "./SignUp";
 import React from "react";
-import BgLoginPage from "../../assets/check/old-car.jpg";
+import BgLoginPage from "../../assets/images/cover/old-car-min.jpg";
 import AsideSection from "./AsideSection";
 
 const SignUpPage = () => {
@@ -19,6 +19,7 @@ const SignUpPage = () => {
           className="absolute top-0 right-0 left-0 hidden sm:block -z-20 h-full w-full opacity-35"
           src={BgLoginPage}
           alt="bg-login"
+          loading="lazy"
         />
         <AsideSection
           description={description}
