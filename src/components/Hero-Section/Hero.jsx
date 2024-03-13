@@ -60,7 +60,7 @@ const Hero = () => {
         {/* page up */}
         <div
           onClick={scrollToTop}
-          className={`scroll-up fixed bottom-10 right-10 flex items-center justify-center bg-orange-500 border-4 border-white w-12 h-12 text-white text-2xl font-bold rounded-full cursor-pointer transition duration-300 z-50 ${
+          className={`scroll-up fixed bottom-5 sm:bottom-10 right-10 flex items-center justify-center bg-orange-500 border-4 border-white w-12 h-12 text-white text-2xl font-bold rounded-full cursor-pointer transition duration-300 z-50 ${
             scrollUp ? "block" : "hidden"
           }`}
         >
