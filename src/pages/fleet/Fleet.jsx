@@ -1,7 +1,7 @@
 import React from "react";
 import BookDemo from "../../assets/illustrator/fleet/BookDemo.jpg";
 import { Link } from "react-router-dom";
-import CarIcon from "../../assets/images/fleet/car-icon.png";
+import CarIcon from "../../assets/illustrator/fleet/car-icon.png";
 import useFleetHook from "./useFleetHook";
 
 const Fleet = () => {
