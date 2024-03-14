@@ -7,12 +7,12 @@ import SignUpPage from "./pages/registeration/SignUpPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MyState } from "./context/myState";
+import Fleet from "./pages/fleet/Fleet";
 
 const App = () => {
   return (
     <MyState>
       <Navbar />
-      
       <Routes>
         <Route index path="/" element={<Home />} />
         {/* <Route path="about" element={<About />} />
@@ -20,8 +20,9 @@ const App = () => {
         <Route path="testimonials" element={<TestimonialsPage />} />
         <Route path="team" element={<Team />} />
         <Route path="contact" element={<Contact />} /> */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="fleet" element={<Fleet />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="signup" element={<SignUpPage />} />
       </Routes>
       <ToastContainer />
     </MyState>

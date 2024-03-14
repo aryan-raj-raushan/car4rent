@@ -19,6 +19,12 @@
 .env.test.local
 .env.production.local
 
+# images use in project
+/src/assets/images/fleet
+
+#firebase-database
+/src/firebase/firebase.database.js
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
