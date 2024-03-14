@@ -44,9 +44,8 @@ function PickCar() {
               {/* pick car */}
               <div className="pick-box flex lg:flex-col gap-2 overflow-auto no-scrollbar">
                 {carData.map((car, index) => (
-                  <div className="w-full min-w-fit lg:min-w-full">
+                  <div className="w-full min-w-fit lg:min-w-full" key={index}>
                     <button
-                      key={index}
                       className={`lg:w-full text-base lg:text-xl font-poppins font-semibold px-2 py-2 lg:px-6 lg:py-4 rounded transition-all duration-200 text-left border-none hover:bg-orange-500 hover:text-white ${coloringButton(
                         `btn${index + 1}`
                       )}`}
@@ -61,13 +60,12 @@ function PickCar() {
                 ))}
               </div>
               {/* Car box */}
-              {carData.map((car, index) => (
-                <>
-                  {active === car && (
+              {carData.map(
+                (car, index) =>
+                  active === car && (
                     <CarBox key={index} data={CAR_DATA} carID={index} />
-                  )}
-                </>
-              ))}
+                  )
+              )}
             </div>
           </div>
         </div>
