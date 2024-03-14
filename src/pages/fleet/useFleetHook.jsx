@@ -1,12 +1,14 @@
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { firebaseDb, firebaseStorage } from "../../firebase/firebase.config";
-import { carData } from "../../firebase/firebase.database";
+// import { carData } from "../../firebase/firebase.database";
 import { useEffect, useState } from "react";
 
 const useFleetHook = () => {
   // Logic to add image and car-database to firebase ******important
-  useEffect(() => {
+
+// ***Important  when want to push new data 1st uncomment car data and in useEffect also
+
     const uploadDataWithImages = async (carData) => {
       try {
         const collectionRef = collection(firebaseDb, "cars");
@@ -49,13 +51,11 @@ const useFleetHook = () => {
           }
         });
         await Promise.all(promises);
-        console.log("Data upload process completed successfully!"); //TODO remove before pushing to codebase
+        console.log("Data upload process completed successfully!");
       } catch (error) {
         console.error("Error uploading data:", error);
       }
     };
-    uploadDataWithImages(carData);
-  }, []);
 
   /* -------------------------------------------------------------------------- */
   /*                                Get Car data                                */
@@ -72,8 +72,10 @@ const useFleetHook = () => {
       console.error("Error fetching car data:", error);
     }
   };
+
   useEffect(() => {
     fetchCarData();
+    // uploadDataWithImages(carData)
   }, []);
   return { carCollection };
 };
