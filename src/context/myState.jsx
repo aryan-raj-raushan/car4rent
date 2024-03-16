@@ -1,9 +1,12 @@
-import { useContext, useState } from "react";
-import MyContext from "./myContext";
+import { createContext, useContext, useState } from "react";
+
+const MyContext = createContext();
 
 export const MyState = (props) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
+  const [openSideNav, setOpenSideNav] = useState(false);
+  
 
   return (
     <MyContext.Provider
@@ -12,6 +15,8 @@ export const MyState = (props) => {
         setUser,
         loading,
         setLoading,
+        openSideNav,
+        setOpenSideNav,
       }}
     >
       {props.children}
