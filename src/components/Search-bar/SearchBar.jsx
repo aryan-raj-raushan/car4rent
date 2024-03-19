@@ -1,79 +1,86 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
+import React from "react";
+import { DateRangeSelector } from "../../hoc/DatePicker";
+import { Autocomplete } from "../../hoc/AutoComplete";
+import useSearchBarHook from "./useSearchBarHook";
+import { DynamicSelect } from "../../hoc/DynamicSelect";
 
 const SearchBar = () => {
-  const [dropOffOption, setDropOffOption] = useState(null);
-  const [pickUpDate, setPickUpDate] = useState(new Date());
-  const [dropOffDate, setDropOffDate] = useState(new Date());
+  const {
+    pickupLocation,
+    setPickupLocation,
+    dropoffLocation,
+    setDropoffLocation,
+    startDate,
+    endDate,
+    setDropoffTime,
+    setPickupTime,
+    setEndDate,
+    setStartDate,
+    pickupTime,
+    dropoffTime,
+    handleSearch,
+    option,
+    options,
+    handlePickup,
+    age,
+    driveAge,
+    handleAge,
+  } = useSearchBarHook();
 
-  const handleSearch = () => {
-    const searchData = {
-      dropOffOption,
-      pickUpDate,
-      dropOffDate,
-    };
-    console.log(searchData);
-    // Further processing or sending data to backend can be done here
-  };
   return (
-    <div className="Container mt-20 h-full">
-      <div className="mx-auto h-full">
-        <div className="flex flex-col h-[60vh]">
-          <div className="flex items-center gap-4 relative ">
-            <Select
-              options={[
-                { label: "Same Drop-off", value: "same" },
-                { label: "Different Drop-off", value: "different" },
-              ]}
-              onChange={(option) => setDropOffOption(option)}
-              className="absolute top-2 z-10"
-            />
-          </div>
-          <div className="inline-flex items-center gap-8 my-5">
-            <input
-              type="text"
-              placeholder="Enter location"
-              className="border border-gray-300 rounded px-4 py-2"
-            />
-            {dropOffOption && dropOffOption.value === "different" && (
-              <input
-                type="text"
-                placeholder="Enter location"
-                className="border border-gray-300 rounded px-4 py-2"
+    <section className="h-full w-full">
+      <div className="Container">
+        <div className="mx-auto">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-4">
+              <DynamicSelect
+                label="Pickup"
+                options={options}
+                value={option}
+                onChange={handlePickup}
               />
-            )}
-            <DatePicker
-              selected={pickUpDate}
-              onChange={(date) => setPickUpDate(date)}
-              showTimeSelect
-              timeFormat="HH:mm"
-              timeIntervals={60}
-              timeCaption="Pick-up Time"
-              dateFormat="MMMM d, yyyy h:mm aa"
-              className="border p-2 rounded-lg"
-            />
-            <DatePicker
-              selected={dropOffDate}
-              onChange={(date) => setDropOffDate(date)}
-              showTimeSelect
-              timeFormat="HH:mm"
-              timeIntervals={60}
-              timeCaption="Drop-off Time"
-              dateFormat="MMMM d, yyyy h:mm aa"
-              className="no-scrollbar scrollbar-thin"
-            />
-            <button
-              onClick={handleSearch}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
-            >
-              Search
-            </button>
+              <DynamicSelect
+                label="Driver's age"
+                options={age}
+                value={driveAge}
+                onChange={handleAge}
+              />
+            </div>
+
+            <div className="flex items-center gap-6 mt-3 justify-between ">
+              <div className="flex items-center gap-4 lg:max-w-4xl flex-1">
+                <Autocomplete
+                  location={pickupLocation}
+                  setLocation={setPickupLocation}
+                />
+                {option && option === "different" && (
+                  <Autocomplete
+                    location={dropoffLocation}
+                    setLocation={setDropoffLocation}
+                  />
+                )}
+              </div>
+              <DateRangeSelector
+                setDropoffTime={setDropoffTime}
+                setPickupTime={setPickupTime}
+                startDate={startDate}
+                endDate={endDate}
+                setEndDate={setEndDate}
+                setStartDate={setStartDate}
+                pickupTime={pickupTime}
+                dropoffTime={dropoffTime}
+              />
+              <button
+                onClick={handleSearch}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded "
+              >
+                Search
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

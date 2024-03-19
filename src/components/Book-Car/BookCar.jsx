@@ -2,6 +2,7 @@ import { IconX } from "@tabler/icons-react";
 import useBookCarHook from "./useBookCarHook";
 import BookCarModal from "./BookCarModal";
 import BookCarForm from "./BookCarForm";
+import SearchBar from "../Search-bar/SearchBar";
 
 const BookCar = () => {
   const {
@@ -15,7 +16,7 @@ const BookCar = () => {
     confirmBooking,
     modalErrorMsg,
     handleModalChange,
-    modalFormData
+    modalFormData,
   } = useBookCarHook();
 
   return (
@@ -53,11 +54,12 @@ const BookCar = () => {
                   onClick={hideMessage}
                 />
               </p>
-              <BookCarForm
+              {/* <BookCarForm
                 handleSubmit={handleSubmit}
                 formData={formData}
                 handleChange={handleChange}
-              />
+              /> */}
+              <SearchBar />
             </div>
           </div>
         </div>

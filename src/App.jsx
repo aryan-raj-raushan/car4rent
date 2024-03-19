@@ -12,7 +12,6 @@ import ScrollToTop from "./hoc/ScrollToTop";
 import FleetInfo from "./components/Fleet-Info/FleetInfo";
 import { CarProvider } from "./context/CarContext";
 import Sidebar from "./hoc/Sidebar";
-import SearchBar from "./components/Search-bar/SearchBar";
 
 const App = () => {
   return (
@@ -20,14 +19,14 @@ const App = () => {
       <CarProvider>
         <Navbar />
         <Sidebar>
-        <Routes>
-          <Route index path="/" element={<Home />} />
-          <Route path="flight" element={<SearchBar />} />
-          <Route path="fleet" element={<Fleet />} />
-          <Route path="fleet/:id" element={<FleetInfo />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="signup" element={<SignUpPage />} />
-        </Routes>
+          <Routes>
+            <Route index path="/" element={<Home />} />
+            <Route path="flight" element={<></>} />
+            <Route path="fleet" element={<Fleet />} />
+            <Route path="fleet/:id" element={<FleetInfo />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="signup" element={<SignUpPage />} />
+          </Routes>
         </Sidebar>
         <ToastContainer />
         <ScrollToTop />

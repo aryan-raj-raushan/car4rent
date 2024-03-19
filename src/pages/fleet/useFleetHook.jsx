@@ -83,8 +83,7 @@ const useFleetHook = () => {
     fetchCarData();
     // uploadDataWithImages(carData)
     // uncomment above and below line when use car data
-    //eslint-disable-next-line 
-
+    //eslint-disable-next-line
   }, []);
 
   return { carCollection, loading };
