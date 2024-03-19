@@ -8,25 +8,37 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MyState } from "./context/myState";
 import Fleet from "./pages/fleet/Fleet";
+import ScrollToTop from "./hoc/ScrollToTop";
+import FleetInfo from "./components/Fleet-Info/FleetInfo";
+import { CarProvider } from "./context/CarContext";
+import Sidebar from "./hoc/Sidebar";
 
 const App = () => {
   return (
     <MyState>
-      <Navbar />
-      <Routes>
-        <Route index path="/" element={<Home />} />
-        {/* <Route path="about" element={<About />} />
-        <Route path="models" element={<Models />} />
-        <Route path="testimonials" element={<TestimonialsPage />} />
-        <Route path="team" element={<Team />} />
-        <Route path="contact" element={<Contact />} /> */}
-        <Route path="fleet" element={<Fleet />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="signup" element={<SignUpPage />} />
-      </Routes>
-      <ToastContainer />
+      <CarProvider>
+        <Navbar />
+        <Sidebar>
+          <Routes>
+            <Route index path="/" element={<Home />} />
+            <Route path="flight" element={<></>} />
+            <Route path="fleet" element={<Fleet />} />
+            <Route path="fleet/:id" element={<FleetInfo />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="signup" element={<SignUpPage />} />
+          </Routes>
+        </Sidebar>
+        <ToastContainer />
+        <ScrollToTop />
+      </CarProvider>
     </MyState>
   );
 };
 
 export default App;
+
+
+
+  // {/* <Route path="testimonials" element={<TestimonialsPage />} /> */}
+  //         {/* <Route path="team" element={<Team />} /> */}
+  //         {/* <Route path="contact" element={<Contact />} />  */}

@@ -9,12 +9,12 @@ html {
 }
 
 body {
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
   font-family: "Poppins", sans-serif;
 }
 
 .Container {
-  @apply max-w-screen-xl mx-auto py-0 px-1;
+  @apply max-w-screen-xl mx-auto py-0 px-1 lg:px-0;
 }
 
 /* Firefox */
@@ -91,6 +91,15 @@ body {
   transform: translate(-50%, -50%);
   top: 40%;
   right: 43%;
+}
+.loader-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.2588235294);
+  border-bottom-color: #ff3d00;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {

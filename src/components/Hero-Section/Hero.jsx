@@ -2,10 +2,8 @@ import { Link } from "react-router-dom";
 import BgShape from "../../assets/images/hero/hero-bg.png";
 import HeroCar from "../../assets/images/hero/main-car.png";
 import { IconChevronRight, IconCircleCheck } from "@tabler/icons-react";
-import useHeroHook from "./useHeroHook";
 
 const Hero = () => {
-  const { scrollUp, scrollToTop, scrollToBookingSection } = useHeroHook();
   return (
     <>
       <section
@@ -32,13 +30,12 @@ const Hero = () => {
                 flexible pick-up options and much more.
               </p>
               <div className="hero-content__text__btns flex flex-col md:flex-row gap-5">
-                <Link
-                  onClick={scrollToBookingSection}
+                <a
                   className="text-white font-bold bg-orange-500 px-7 py-4 md:py-4 rounded-md shadow-lg transition duration-300 hover:bg-orange-600 flex items-center justify-center border-2 border-solid border-orange-500"
-                  to="/"
+                  href="#booking-section"
                 >
                   Book Ride <IconCircleCheck className="ml-2" />
-                </Link>
+                </a>
                 <Link
                   className="text-black border border-black border-solid px-7 py-3 md:py-4 rounded-md shadow-lg transition duration-300 hover:bg-black hover:text-white flex items-center justify-center bg-transparent"
                   to="/"
@@ -55,16 +52,6 @@ const Hero = () => {
               className="hero-content__car-img hidden absolute right-0 md:block w-2/3 z-20 lg:mt-12"
             />
           </div>
-        </div>
-
-        {/* page up */}
-        <div
-          onClick={scrollToTop}
-          className={`scroll-up fixed bottom-5 sm:bottom-10 right-10 flex items-center justify-center bg-orange-500 border-4 border-white w-12 h-12 text-white text-2xl font-bold rounded-full cursor-pointer transition duration-300 z-50 ${
-            scrollUp ? "block" : "hidden"
-          }`}
-        >
-          ^
         </div>
       </section>
     </>
