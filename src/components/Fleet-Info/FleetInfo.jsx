@@ -1,5 +1,5 @@
 import React from "react";
-import Demo from "../../assets/images/fleet/swift.png";
+import Demo from "../../assets/images/hero/main-car.png";
 import Transmission from "../../assets/illustrator/fleet/transmission.png";
 import Bootspace from "../../assets/illustrator/fleet/boot-space.png";
 import CarLength from "../../assets/illustrator/fleet/car-length.png";
