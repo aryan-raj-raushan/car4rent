@@ -1,7 +1,7 @@
 import { IconX } from "@tabler/icons-react";
 import useBookCarHook from "./useBookCarHook";
 import BookCarModal from "./BookCarModal";
-import BookCarForm from "./BookCarForm";
+// import BookCarForm from "./BookCarForm";
 import SearchBar from "../Search-bar/SearchBar";
 
 const BookCar = () => {
@@ -10,9 +10,9 @@ const BookCar = () => {
     hideMessage,
     errorMessage,
     modal,
-    handleSubmit,
+    // handleSubmit,
     formData,
-    handleChange,
+    // handleChange,
     confirmBooking,
     modalErrorMsg,
     handleModalChange,
