@@ -45,7 +45,7 @@ export const DateRangeSelector = ({
           startDate={startDate}
           endDate={endDate}
           minDate={new Date()}
-          placeholderText="Select Pick-up Date"
+          placeholderText="Pick-up Date"
           className="outline-none text-gray-500 text-base cursor-pointer w-36"
           dateFormat="dd-MM-yyyy"
           // shouldCloseOnSelect={false}
@@ -76,7 +76,7 @@ export const DateRangeSelector = ({
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          placeholderText="Select Drop-off Date"
+          placeholderText="Drop-off Date"
           className="outline-none text-gray-500 text-base cursor-pointer w-36"
           dateFormat="dd-MM-yyyy"
         />
