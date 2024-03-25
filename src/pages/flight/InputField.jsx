@@ -2,6 +2,7 @@ import React from "react";
 import FlightIcon from "../../assets/illustrator/flightSearch/flight.png";
 import axios from "axios";
 import { getAccessToken } from "../../services/AmadeusService";
+import { RiFlightTakeoffFill, RiFlightLandFill } from "react-icons/ri";
 
 const InputField = ({
   valueType,
@@ -18,7 +19,7 @@ const InputField = ({
     const { value } = e.target;
     setValueType(value);
     try {
-      //   const accessToken = await getAccessToken();
+      const accessToken = await getAccessToken();
       const response = await axios.get(
         `https://test.api.amadeus.com/v1/reference-data/locations`,
         {
@@ -26,14 +27,14 @@ const InputField = ({
             subType: "AIRPORT",
             keyword: value,
             sort: "analytics.travelers.score",
-            view: "LIGHT",
+            // view: "LIGHT",
             page: {
               offset: 0,
               limit: 10,
             },
           },
           headers: {
-            Authorization: `Bearer ${"accessToken"}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
@@ -45,14 +46,19 @@ const InputField = ({
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full border border-gray-300 flex items-center p-2 rounded-md gap-2">
+      {name === "origin" ? (
+        <RiFlightTakeoffFill className="inline-block text-lg" />
+      ) : (
+        <RiFlightLandFill className="inline-block text-lg" />
+      )}
       <input
         type="text"
         name={name}
         placeholder={placeHolder}
         value={valueType}
         onChange={handleInputChange}
-        className="border border-gray-300 text-base font-medium text-gray-500 rounded-md p-2 uppercase outline-none w-full"
+        className=" text-base font-medium text-gray-500 capitalize outline-none w-full"
       />
       {showSuggestions && suggestions.length > 0 && (
         <div className="absolute top-14 max-h-60 bg-white border border-gray-300 rounded-md px-4 py-4 w-96 overflow-y-auto h-auto">

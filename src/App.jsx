@@ -13,26 +13,32 @@ import FleetInfo from "./components/Fleet-Info/FleetInfo";
 import { CarProvider } from "./context/CarContext";
 import Sidebar from "./hoc/Sidebar";
 import FlightSearch from "./pages/flight/FlightSearch";
+import FlightInfo from "./pages/flightInfo/FlightInfo";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 
 const App = () => {
   return (
-    <MyState>
-      <CarProvider>
-        <Navbar />
-        <Sidebar>
-          <Routes>
-            <Route index path="/" element={<Home />} />
-            <Route path="flight" element={<FlightSearch />} />
-            <Route path="fleet" element={<Fleet />} />
-            <Route path="fleet/:id" element={<FleetInfo />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="signup" element={<SignUpPage />} />
-          </Routes>
-        </Sidebar>
-        <ToastContainer />
-        <ScrollToTop />
-      </CarProvider>
-    </MyState>
+    <Provider store={store}>
+      <MyState>
+        <CarProvider>
+          <Navbar />
+          <Sidebar>
+            <Routes>
+              <Route index path="/" element={<Home />} />
+              <Route path="flight" element={<FlightSearch />} />
+              <Route path="flightInfo/*" element={<FlightInfo />} />
+              <Route path="fleet" element={<Fleet />} />
+              <Route path="fleet/:id" element={<FleetInfo />} />
+              <Route path="login" element={<LoginPage />} />
+              <Route path="signup" element={<SignUpPage />} />
+            </Routes>
+          </Sidebar>
+          <ToastContainer />
+          <ScrollToTop />
+        </CarProvider>
+      </MyState>
+    </Provider>
   );
 };
 
