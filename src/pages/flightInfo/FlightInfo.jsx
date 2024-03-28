@@ -14,9 +14,9 @@ const FlightInfo = () => {
           <div className="max-w-4xl mx-auto flex gap-6 flex-col">
             {flightInfoData.map((flightData) => {
               const { dictionaries } = flightData;
-              return flightData.data.map((flight) => (
+              return flightData.data.map((flight, index) => (
                 <FlightInfoCard
-                  key={flight.id}
+                  key={index}
                   data={flight}
                   dictionaries={dictionaries}
                 />

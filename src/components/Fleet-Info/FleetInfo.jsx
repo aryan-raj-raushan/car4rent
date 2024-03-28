@@ -8,19 +8,11 @@ import FuelIndication from "../../assets/illustrator/fleet/fuel.png";
 import Mileage from "../../assets/illustrator/fleet/mileage.png";
 import CarSeat from "../../assets/illustrator/fleet/car-seat.png";
 import CarModel from "../../assets/illustrator/fleet/car-model.png";
-import { useCarContext } from "../../context/CarContext";
-import { useMyState } from "../../context/myState";
 
 const FleetInfo = () => {
-  const { carCollection } = useCarContext();
-  const { loading } = useMyState();
-  console.log("data", carCollection);
 
   return (
     <>
-      {loading ? (
-        <div>Loading....</div>
-      ) : (
         <section className="px-4 sm:px-10 py-4">
           <div className="Container">
             <div className="flex flex-col gap-10">
@@ -128,7 +120,6 @@ const FleetInfo = () => {
             </div>
           </div>
         </section>
-      )}
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMyState } from "../context/myState";
 import { menuItems } from "../constant/SiderbarConst";
 import { Link, useLocation } from "react-router-dom";
+import { LinearProgressLoader } from "./LinearProgressLoader";
 
 const Sidebar = ({ children }) => {
   const { openSideNav, loading } = useMyState();
@@ -67,7 +68,9 @@ const Sidebar = ({ children }) => {
           {children}
         </div>
       ) : (
-        <>Loading....</>
+        <div className="w-full flex-1 mt-[1px]">
+          <LinearProgressLoader />
+        </div>
       )}
     </div>
   );
