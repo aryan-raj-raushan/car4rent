@@ -13,6 +13,7 @@ export const DateRangeSelector = ({
   startDate,
   pickupTime,
   dropoffTime,
+  showTime,
 }) => {
   const handleStartDateChange = (date) => {
     setStartDate(date);
@@ -44,24 +45,26 @@ export const DateRangeSelector = ({
           startDate={startDate}
           endDate={endDate}
           minDate={new Date()}
-          placeholderText="Select Pick-up Date"
-          className="outline-none text-gray-500 text-base cursor-pointer w-28"
+          placeholderText="Pick-up Date"
+          className="outline-none text-gray-500 text-base cursor-pointer w-36"
           dateFormat="dd-MM-yyyy"
           // shouldCloseOnSelect={false}
         />
-        <div className="border-l pl-2">
-          <DatePicker
-            selected={pickupTime}
-            onChange={handleTimeChange}
-            showTimeSelect
-            showTimeSelectOnly
-            timeFormat="HH:mm"
-            timeIntervals={60}
-            timeCaption="Time"
-            dateFormat="HH:mm"
-            className="outline-none text-gray-500 text-base cursor-pointer w-12"
-          />
-        </div>
+        {showTime && (
+          <div className="border-l pl-2">
+            <DatePicker
+              selected={pickupTime}
+              onChange={handleTimeChange}
+              showTimeSelect
+              showTimeSelectOnly
+              timeFormat="HH:mm"
+              timeIntervals={60}
+              timeCaption="Time"
+              dateFormat="HH:mm"
+              className="outline-none text-gray-500 text-base cursor-pointer w-12"
+            />
+          </div>
+        )}
       </div>
 
       <div className="border border-gray-300 p-1 rounded-md cursor-pointer flex items-center">
@@ -73,23 +76,25 @@ export const DateRangeSelector = ({
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          placeholderText="Select Drop-off Date"
+          placeholderText="Drop-off Date"
           className="outline-none text-gray-500 text-base cursor-pointer w-36"
           dateFormat="dd-MM-yyyy"
         />
-        <div className="border-l pl-2">
-          <DatePicker
-            selected={dropoffTime}
-            onChange={handleDropOffTIme}
-            showTimeSelect
-            showTimeSelectOnly
-            timeFormat="HH:mm"
-            timeIntervals={60}
-            timeCaption="Time"
-            dateFormat="HH:mm"
-            className="outline-none text-gray-500 text-base cursor-pointer w-12"
-          />
-        </div>
+        {showTime && (
+          <div className="border-l pl-2">
+            <DatePicker
+              selected={dropoffTime}
+              onChange={handleDropOffTIme}
+              showTimeSelect
+              showTimeSelectOnly
+              timeFormat="HH:mm"
+              timeIntervals={60}
+              timeCaption="Time"
+              dateFormat="HH:mm"
+              className="outline-none text-gray-500 text-base cursor-pointer w-12"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import { useMyState } from "../../context/myState";
 import { useCarContext } from "../../context/CarContext";
 
 const useFleetHook = () => {
-  const { loading, setLoading } = useMyState();
+  const { setLoading } = useMyState();
   const { carCollection, setCarCollection } = useCarContext();
   // Logic to add image and car-database to firebase ******important
 
@@ -67,26 +67,26 @@ const useFleetHook = () => {
   /* -------------------------------------------------------------------------- */
 
   const fetchCarData = async () => {
+    setLoading(true);
     try {
-      setLoading(true); // Set loading state to true before fetching data
+      setLoading(false);
       const querySnapshot = await getDocs(collection(firebaseDb, "cars"));
       const data = querySnapshot.docs.map((doc) => doc.data());
       setCarCollection(data);
-      setLoading(false); // Set loading state to false after data is fetched
     } catch (error) {
       console.error("Error fetching car data:", error);
-      setLoading(false); // Set loading state to false if an error occurs
+    } finally {
+      setLoading(false); // Set loading to false after fetching
     }
   };
 
   useEffect(() => {
     fetchCarData();
-    // uploadDataWithImages(carData)
-    // uncomment above and below line when use car data
+    // Call fetchCarData only when the component mounts
     //eslint-disable-next-line
   }, []);
 
-  return { carCollection, loading };
+  return { carCollection };
 };
 
 export default useFleetHook;

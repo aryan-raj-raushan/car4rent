@@ -40,7 +40,7 @@ export const Autocomplete = ({ location, setLocation }) => {
       </div>
       {placePredictions.length > 0 && (
         <div className="absolute min-w-80 !z-50 h-auto overflow-y-auto ">
-          {!isPlacePredictionsLoading ? (
+          {!isPlacePredictionsLoading && (
             <ul className="flex flex-col gap-2 max-h-60 my-2 border border-gray-300 px-4 py-3 rounded-md overflow-y-auto bg-white">
               {placePredictions.map((item, index) => (
                 <div
@@ -63,8 +63,6 @@ export const Autocomplete = ({ location, setLocation }) => {
                 </div>
               ))}
             </ul>
-          ) : (
-            <div>Loading...</div>
           )}
         </div>
       )}

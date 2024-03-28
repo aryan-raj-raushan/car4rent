@@ -10,7 +10,7 @@ const Hero = () => {
         id="home"
         className="hero-section h-auto lg:h-[74vh] px-4 sm:px-10"
       >
-        <div className="Container">
+        <div className="">
           <img
             className="absolute top-0 right-0 hidden md:block z-0"
             src={BgShape}

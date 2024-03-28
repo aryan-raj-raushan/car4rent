@@ -5,12 +5,10 @@ import CarIcon from "../../assets/illustrator/fleet/car-icon.png";
 import useFleetHook from "./useFleetHook";
 
 const Fleet = () => {
-  const { carCollection, loading } = useFleetHook();
+  const { carCollection } = useFleetHook();
   return (
     <>
-      {loading ? (
-        <div>Loading....</div>
-      ) : (
+      {carCollection.length > 0 && (
         <section id="home" className="px-4 sm:px-10 py-8">
           <div className="Container">
             <div className="flex flex-col mt-2 ">

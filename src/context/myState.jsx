@@ -6,8 +6,8 @@ export const MyState = (props) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [openSideNav, setOpenSideNav] = useState(false);
-  
-
+  const [sidebarClass, setSidebarClass] = useState("");
+  const [flightData, setFlightData] = useState([]);
   return (
     <MyContext.Provider
       value={{
@@ -17,6 +17,10 @@ export const MyState = (props) => {
         setLoading,
         openSideNav,
         setOpenSideNav,
+        setSidebarClass,
+        sidebarClass,
+        flightData,
+        setFlightData
       }}
     >
       {props.children}

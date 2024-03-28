@@ -1,0 +1,605 @@
+{
+    "meta": {
+        "count": 5,
+        "links": {
+            "self": "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAT&destinationLocationCode=DEL&departureDate=2024-03-29&adults=1&max=5"
+        }
+    },
+    "data": [
+        {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2024-03-20",
+            "lastTicketingDateTime": "2024-03-20",
+            "numberOfBookableSeats": 9,
+            "itineraries": [
+                {
+                    "duration": "PT1H50M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "PAT",
+                                "at": "2024-03-29T10:20:00"
+                            },
+                            "arrival": {
+                                "iataCode": "DEL",
+                                "terminal": "3",
+                                "at": "2024-03-29T12:10:00"
+                            },
+                            "carrierCode": "UK",
+                            "number": "718",
+                            "aircraft": {
+                                "code": "320"
+                            },
+                            "operating": {
+                                "carrierCode": "UK"
+                            },
+                            "duration": "PT1H50M",
+                            "id": "2",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "59.31",
+                "base": "50.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "59.31"
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": true
+            },
+            "validatingAirlineCodes": [
+                "UK"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "59.31",
+                        "base": "50.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "2",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "V0RPRYS",
+                            "brandedFare": "ECOYS",
+                            "brandedFareLabel": "ECO STANDARD",
+                            "class": "V",
+                            "includedCheckedBags": {
+                                "weight": 15,
+                                "weightUnit": "KG"
+                            },
+                            "amenities": [
+                                {
+                                    "description": "EXCESS HAND BAGGAGE 5KG",
+                                    "isChargeable": true,
+                                    "amenityType": "BAGGAGE",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "VISTARA SELECT",
+                                    "isChargeable": false,
+                                    "amenityType": "PRE_RESERVED_SEAT",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "MEAL SERVICES",
+                                    "isChargeable": false,
+                                    "amenityType": "MEAL",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "PRIORITY CHECK IN",
+                                    "isChargeable": true,
+                                    "amenityType": "TRAVEL_SERVICES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "PRIORITY BOARDING",
+                                    "isChargeable": true,
+                                    "amenityType": "TRAVEL_SERVICES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "PRIORITY BAGGAGE HANDLING",
+                                    "isChargeable": true,
+                                    "amenityType": "TRAVEL_SERVICES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "UPGRADE ELIGIBILITY",
+                                    "isChargeable": true,
+                                    "amenityType": "BRANDED_FARES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "2",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2024-03-20",
+            "lastTicketingDateTime": "2024-03-20",
+            "numberOfBookableSeats": 9,
+            "itineraries": [
+                {
+                    "duration": "PT1H50M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "PAT",
+                                "at": "2024-03-29T20:30:00"
+                            },
+                            "arrival": {
+                                "iataCode": "DEL",
+                                "terminal": "3",
+                                "at": "2024-03-29T22:20:00"
+                            },
+                            "carrierCode": "UK",
+                            "number": "716",
+                            "aircraft": {
+                                "code": "320"
+                            },
+                            "operating": {
+                                "carrierCode": "UK"
+                            },
+                            "duration": "PT1H50M",
+                            "id": "5",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "59.31",
+                "base": "50.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "59.31"
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": true
+            },
+            "validatingAirlineCodes": [
+                "UK"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "59.31",
+                        "base": "50.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "5",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "V0RPRYS",
+                            "brandedFare": "ECOYS",
+                            "brandedFareLabel": "ECO STANDARD",
+                            "class": "V",
+                            "includedCheckedBags": {
+                                "weight": 15,
+                                "weightUnit": "KG"
+                            },
+                            "amenities": [
+                                {
+                                    "description": "EXCESS HAND BAGGAGE 5KG",
+                                    "isChargeable": true,
+                                    "amenityType": "BAGGAGE",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "VISTARA SELECT",
+                                    "isChargeable": false,
+                                    "amenityType": "PRE_RESERVED_SEAT",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "MEAL SERVICES",
+                                    "isChargeable": false,
+                                    "amenityType": "MEAL",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "PRIORITY CHECK IN",
+                                    "isChargeable": true,
+                                    "amenityType": "TRAVEL_SERVICES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "PRIORITY BOARDING",
+                                    "isChargeable": true,
+                                    "amenityType": "TRAVEL_SERVICES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "PRIORITY BAGGAGE HANDLING",
+                                    "isChargeable": true,
+                                    "amenityType": "TRAVEL_SERVICES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "UPGRADE ELIGIBILITY",
+                                    "isChargeable": true,
+                                    "amenityType": "BRANDED_FARES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "3",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2024-03-29",
+            "lastTicketingDateTime": "2024-03-29",
+            "numberOfBookableSeats": 9,
+            "itineraries": [
+                {
+                    "duration": "PT1H50M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "PAT",
+                                "at": "2024-03-29T16:00:00"
+                            },
+                            "arrival": {
+                                "iataCode": "DEL",
+                                "terminal": "3",
+                                "at": "2024-03-29T17:50:00"
+                            },
+                            "carrierCode": "AI",
+                            "number": "408",
+                            "aircraft": {
+                                "code": "319"
+                            },
+                            "operating": {
+                                "carrierCode": "AI"
+                            },
+                            "duration": "PT1H50M",
+                            "id": "3",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "79.72",
+                "base": "69.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "79.72"
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": true
+            },
+            "validatingAirlineCodes": [
+                "AI"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "79.72",
+                        "base": "69.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "3",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "GIP",
+                            "class": "G",
+                            "includedCheckedBags": {
+                                "weight": 25,
+                                "weightUnit": "KG"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "4",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2024-03-29",
+            "lastTicketingDateTime": "2024-03-29",
+            "numberOfBookableSeats": 9,
+            "itineraries": [
+                {
+                    "duration": "PT1H50M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "PAT",
+                                "at": "2024-03-29T19:10:00"
+                            },
+                            "arrival": {
+                                "iataCode": "DEL",
+                                "terminal": "3",
+                                "at": "2024-03-29T21:00:00"
+                            },
+                            "carrierCode": "AI",
+                            "number": "416",
+                            "aircraft": {
+                                "code": "319"
+                            },
+                            "operating": {
+                                "carrierCode": "AI"
+                            },
+                            "duration": "PT1H50M",
+                            "id": "4",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "83.92",
+                "base": "73.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "83.92"
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": true
+            },
+            "validatingAirlineCodes": [
+                "AI"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "83.92",
+                        "base": "73.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "4",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "GIP",
+                            "class": "G",
+                            "includedCheckedBags": {
+                                "weight": 25,
+                                "weightUnit": "KG"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "5",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2024-03-29",
+            "lastTicketingDateTime": "2024-03-29",
+            "numberOfBookableSeats": 9,
+            "itineraries": [
+                {
+                    "duration": "PT1H50M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "PAT",
+                                "at": "2024-03-29T09:20:00"
+                            },
+                            "arrival": {
+                                "iataCode": "DEL",
+                                "terminal": "3",
+                                "at": "2024-03-29T11:10:00"
+                            },
+                            "carrierCode": "SG",
+                            "number": "8729",
+                            "aircraft": {
+                                "code": "737"
+                            },
+                            "operating": {
+                                "carrierCode": "SG"
+                            },
+                            "duration": "PT1H50M",
+                            "id": "1",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "121.56",
+                "base": "99.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "121.56"
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": true
+            },
+            "validatingAirlineCodes": [
+                "HR"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "121.56",
+                        "base": "99.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "1",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "USAVER",
+                            "class": "U",
+                            "includedCheckedBags": {
+                                "weight": 15,
+                                "weightUnit": "KG"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "dictionaries": {
+        "locations": {
+            "PAT": {
+                "cityCode": "PAT",
+                "countryCode": "IN"
+            },
+            "DEL": {
+                "cityCode": "DEL",
+                "countryCode": "IN"
+            }
+        },
+        "aircraft": {
+            "320": "AIRBUS A320",
+            "319": "AIRBUS A319",
+            "737": "BOEING 737 ALL SERIES PASSENGER"
+        },
+        "currencies": {
+            "EUR": "EURO"
+        },
+        "carriers": {
+            "SG": "SPICEJET",
+            "UK": "VISTARA",
+            "AI": "AIR INDIA"
+        }
+    }
+}

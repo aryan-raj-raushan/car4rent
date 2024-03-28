@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="z-50 mb-24 w-full">
+      <nav className="z-50 w-full h-24 ">
         {/* mobile */}
         {/* <NavbarMob open={nav} isOpen={openNav} /> */}
         {/* desktop */}
