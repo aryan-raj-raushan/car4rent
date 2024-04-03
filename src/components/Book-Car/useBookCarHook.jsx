@@ -31,7 +31,6 @@ const useBookCarHook = () => {
       return;
     }
     handleModal();
-    console.log("Form data:", formData);
     setErrorMessage("");
   };
 

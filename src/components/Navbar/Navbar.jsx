@@ -19,7 +19,7 @@ const Navbar = () => {
         {/* mobile */}
         {/* <NavbarMob open={nav} isOpen={openNav} /> */}
         {/* desktop */}
-        <div className="border-b navbar max-w-full w-full my-0 mx-auto flex justify-between items-center py-2 px-5 lg:px-050 z-50 fixed top-0 right-0 left-0 bg-white bg-opacity-70">
+        <div className="border-b navbar max-w-full w-full my-0 mx-auto flex justify-between items-center py-2 px-5 lg:px-5 z-50 fixed top-0 right-0 left-0 bg-white bg-opacity-70">
           <div className="flex items-center space-x-2 text-center">
             <div
               className="mobile-hamb"

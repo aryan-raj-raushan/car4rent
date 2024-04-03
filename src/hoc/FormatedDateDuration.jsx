@@ -1,4 +1,4 @@
-const formatDuration = (duration) => {
+export const formatDuration = (duration) => {
   const matches = duration.match(/PT(\d+H)?(\d+M)?/);
 
   let hours = 0;
@@ -17,4 +17,12 @@ const formatDuration = (duration) => {
     : "0h";
 };
 
-export default formatDuration;
+export const getDurationInMinutes = (durationString) => {
+  const match = durationString.match(/PT(\d+H)?(\d+M)?/);
+  if (match) {
+    const hours = match[1] ? parseInt(match[1]) : 0;
+    const minutes = match[2] ? parseInt(match[2]) : 0;
+    return hours * 60 + minutes;
+  }
+  return 0;
+};

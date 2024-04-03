@@ -1,8 +1,9 @@
 import React from "react";
-import formatDuration from "../../hoc/FormatedDateDuration";
+import {formatDuration} from "../../hoc/FormatedDateDuration";
 import { format, parseISO } from "date-fns";
 import { BsClockHistory } from "react-icons/bs";
 import LongLayOver from "../../components/Svgs/LongLayOver";
+import useFlightDetailsCardHook from "./useFlightDetailsCardHook";
 
 const FlightDetailsCard = ({
   itinerary,
@@ -11,36 +12,28 @@ const FlightDetailsCard = ({
   carriers,
   travelDetails,
   numberOfStops,
+  price,
 }) => {
-  const travelClass = travelDetails.fareDetailsBySegment[0].cabin;
-  const { weight, weightUnit } =
-    travelDetails.fareDetailsBySegment[0].includedCheckedBags;
-  const travelType = travelDetails.travelerType;
-
-  const calculateLayovers = (segments) => {
-    return segments.slice(0, -1).map((segment, index) => {
-      const arrivalTime = new Date(segment.arrival.at);
-      const departureTime = new Date(segments[index + 1].departure.at);
-      const layoverMinutes = Math.round(
-        (departureTime - arrivalTime) / (1000 * 60)
-      );
-      const layoverHours = Math.floor(layoverMinutes / 60);
-      const remainingMinutes = layoverMinutes % 60;
-      return `${
-        layoverHours > 0 ? layoverHours + "h" : ""
-      } ${remainingMinutes}m`;
-    });
-  };
-
+  const {
+    calculateLayovers,
+    handleKnowMore,
+    handlePrevent,
+    travelClass,
+    CustomWidthTooltip,
+    KnowMore,
+    weight,
+    weightUnit,
+    travelType,
+  } = useFlightDetailsCardHook({ price, travelDetails });
   return (
     <>
-      {itinerary.segments.length > 0 && (
+      {itinerary.segments && itinerary.segments.length > 0 && (
         <div
           className={`${
             open ? "max-h-[80rem]" : "max-h-0"
           } text-base font-normal font-rubik text-gray-700 transition-all ease-in-out overflow-hidden duration-1000`}
         >
-          {itinerary.segments.map((segment, index) => {
+          {itinerary?.segments.map((segment, index) => {
             const airlineCode = segment.carrierCode;
             const airlineName = carriers[airlineCode];
             const carrierNumber = segment.number;
@@ -64,6 +57,11 @@ const FlightDetailsCard = ({
               arrivalDate,
               "EEE',' dd MMM yyyy"
             );
+
+            const formattedDepartureDateTop = format(
+              departureDate,
+              "EEE',' dd MMM"
+            );
             const arrivalTime = format(arrivalDate, "HH:mm");
             const departureTime = format(departureDate, "HH:mm");
             const layovers = calculateLayovers(itinerary.segments);
@@ -73,6 +71,7 @@ const FlightDetailsCard = ({
             if (!departureAirportDetails) {
               return null;
             }
+
             const {
               airport: departureAirport,
               city: departureCityName,
@@ -85,6 +84,7 @@ const FlightDetailsCard = ({
             if (!arrivalAirportDetails) {
               return null;
             }
+
             const {
               airport: arrivalAirport,
               city: arrivalCityName,
@@ -93,7 +93,7 @@ const FlightDetailsCard = ({
             } = arrivalAirportDetails;
 
             return (
-              <div key={index}>
+              <div key={index} onClick={(e) => handlePrevent(e)}>
                 <div className="flex flex-col border border-gray-300 rounded-lg py-3 shadow-inner mt-6 mb-3 relative">
                   {numberOfStops > 0 && layovers[index] && (
                     <div className="absolute -bottom-3 left-1/3">
@@ -109,7 +109,7 @@ const FlightDetailsCard = ({
                     <p className="text-sm font-medium font-poppins text-gray-500">
                       {departureCityName} &rarr; {arrivalCityName}{" "}
                       <span className="ml-2 text-xs font-light text-gray-800">
-                        {"Fri 22Mar"}
+                        {formattedDepartureDateTop}
                       </span>
                     </p>
                     {index === 0 && (
@@ -117,7 +117,15 @@ const FlightDetailsCard = ({
                         <p className="text-xs border rounded-full px-2 bg-green-100 border-green-300">
                           Partially Refundable
                         </p>
-                        <p className="text-xs text-blue-500">Know More</p>
+
+                        <CustomWidthTooltip title={KnowMore}>
+                          <div
+                            className="text-xs text-blue-500 !relative"
+                            onClick={handleKnowMore}
+                          >
+                            Know More
+                          </div>
+                        </CustomWidthTooltip>
                       </div>
                     )}
                   </div>

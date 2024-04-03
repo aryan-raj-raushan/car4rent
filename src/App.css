@@ -116,3 +116,55 @@ body {
   -webkit-appearance: none;
   margin: 0;
 }
+
+
+.ribbon {
+  position: absolute;
+  right: -2px;
+  top: -6px;
+  z-index: 1;
+  overflow: hidden;
+  width: 140px;
+  height: 120px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: medium;
+  color: #fff;
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: bolder;
+  line-height: 26px;
+  transform: rotate(40deg);
+  width: 120px;
+  height: 26px;
+  display: block;
+  background: rgb(249 115 22);
+  background: linear-gradient(rgb(249 115 22) 0%, rgb(194 65 12) 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 17px; 
+  right: -24px;
+  z-index: 2;
+}
+
+.ribbon span::before {
+   content: '';
+   position: absolute; 
+   left: 0px; top: 100%;
+   z-index: -1;
+   border-left: 3px solid rgb(194 65 12);
+   border-right: 3px solid transparent;
+   border-bottom: 3px solid transparent;
+   border-top: 3px solid rgb(194 65 12);
+}
+.ribbon span::after {
+   content: '';
+   position: absolute; 
+   right: 0%; top: 100%;
+   z-index: -1;
+   border-right: 3px solid rgb(194 65 12);
+   border-left: 3px solid transparent;
+   border-bottom: 3px solid transparent;
+   border-top: 3px solid rgb(194 65 12);
+}
