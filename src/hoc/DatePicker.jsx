@@ -14,6 +14,7 @@ export const DateRangeSelector = ({
   pickupTime,
   dropoffTime,
   showTime,
+  className,
 }) => {
   const handleStartDateChange = (date) => {
     setStartDate(date);
@@ -32,11 +33,14 @@ export const DateRangeSelector = ({
   const handleDropOffTIme = (time) => {
     setDropoffTime(time);
   };
-  
 
   return (
-    <div className="flex gap-4">
-      <div className="border border-gray-300 p-1 rounded-md cursor-pointer flex items-center w-full">
+    <div className="flex gap-4 z-40">
+      <div
+        className={`${
+          className === "classes" ? "w-40 z-30" : " w-full"
+        } border border-gray-300 p-1 rounded-md cursor-pointer flex items-center `}
+      >
         <CiCalendarDate className="inline-block mr-2" />
         <DatePicker
           selected={startDate}
@@ -46,7 +50,9 @@ export const DateRangeSelector = ({
           endDate={endDate}
           minDate={new Date()}
           placeholderText="Pick-up Date"
-          className="outline-none text-gray-500 text-base cursor-pointer w-36"
+          className={`outline-none text-gray-500  cursor-pointer ${
+            className === "classes" ? "w-24 text-xs" : "w-36 text-base"
+          }`}
           dateFormat="dd-MM-yyyy"
         />
         {showTime && (
@@ -76,7 +82,9 @@ export const DateRangeSelector = ({
           endDate={endDate}
           minDate={startDate}
           placeholderText="Drop-off Date"
-          className="outline-none text-gray-500 text-base cursor-pointer w-36"
+          className={`outline-none text-gray-500  cursor-pointer ${
+            className === "classes" ? "w-24 text-xs" : "w-36 text-base"
+          }`}
           dateFormat="dd-MM-yyyy"
         />
         {showTime && (

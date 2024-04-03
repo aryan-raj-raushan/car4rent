@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import flightReducer from "./flightSlice";
+import flightSlice from "./flightSlice";
 
 const store = configureStore({
   reducer: {
-    flight: flightReducer,
+    flight: flightSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

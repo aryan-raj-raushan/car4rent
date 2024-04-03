@@ -1,7 +1,7 @@
 import React from "react";
-import FlightIcon from "../../assets/illustrator/flightSearch/flight.png";
+import FlightIcon from "../assets/illustrator/flightSearch/flight.png";
 import axios from "axios";
-import { getAccessToken } from "../../services/AmadeusService";
+import { getAccessToken } from "../services/AmadeusService";
 import { RiFlightTakeoffFill, RiFlightLandFill } from "react-icons/ri";
 
 const InputField = ({
@@ -14,6 +14,7 @@ const InputField = ({
   setSuggestions,
   setShowSuggestions,
   setValueType,
+  className,
 }) => {
   const handleInputChange = async (e) => {
     const { value } = e.target;
@@ -46,7 +47,11 @@ const InputField = ({
   };
 
   return (
-    <div className="relative w-full border border-gray-300 flex items-center p-2 rounded-md gap-2">
+    <div
+      className={`${
+        className === "classes" ? "w-40" : " w-full"
+      } relative border border-gray-300 flex items-center p-2 rounded-md gap-2`}
+    >
       {name === "origin" ? (
         <RiFlightTakeoffFill className="inline-block text-lg" />
       ) : (
@@ -58,10 +63,14 @@ const InputField = ({
         placeholder={placeHolder}
         value={valueType}
         onChange={handleInputChange}
-        className=" text-base font-medium text-gray-500 capitalize outline-none w-full"
+        className={`${
+          className === "classes"
+            ? "w-28 text-xs font-normal"
+            : "text-base font-medium w-full"
+        }  text-gray-500 capitalize outline-none `}
       />
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-14 max-h-60 bg-white border border-gray-300 rounded-md px-4 py-4 w-96 overflow-y-auto h-auto">
+        <div className="absolute top-12 left-0 max-h-60 bg-white border border-gray-300 rounded-md px-4 py-4 w-96 overflow-y-auto no-scrollbar h-auto z-40">
           <ul className=" flex flex-col gap-4 text-sm text-gray-500 h-full">
             {suggestions.map((suggestion) => {
               const { name, subType } = suggestion;

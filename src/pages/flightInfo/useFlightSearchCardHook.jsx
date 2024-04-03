@@ -4,28 +4,63 @@ import { toast } from "react-toastify";
 import { useMyState } from "../../context/myState";
 import { getAccessToken } from "../../services/AmadeusService";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import {flightData} from "../../redux/flightSlice"
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { flightData } from "../../redux/flightSlice";
 import { format } from "date-fns";
 
-const useFlightSearchHook = () => {
+const useFlightSearchCardHook = () => {
   const ref = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { setLoading, setFlightData } = useMyState();
+  const flightStoreData = useSelector((state) => state.flight);
+  const { flights } = flightStoreData;
+  const {
+    origin,
+    destination,
+    travelType,
+    adults,
+    children,
+    infants,
+    travelClass,
+    nonStop,
+  } = flights || {};
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const originParams = searchParams.get("origin") || "";
+  const destinationParams = searchParams.get("destination") || "";
+  const departure = searchParams.get("departure");
+  const arrival = searchParams.get("return");
 
   const initialData = {
-    origin: "",
-    destination: "",
-    startDate: new Date(),
-    endDate: "",
-    travelType: "one-way",
-    adults: 1,
-    children: 0,
-    infants: 0,
-    travelClass: "ECONOMY",
-    nonStop: false,
+    origin: originParams,
+    destination: destinationParams,
+    startDate: departure ? new Date(departure) : new Date(),
+    endDate: arrival ? new Date(arrival) : "",
+    travelType:
+      origin === originParams && destination === destinationParams
+        ? travelType
+        : "one-way",
+    adults:
+      origin === originParams && destination === destinationParams ? adults : 1,
+    children:
+      origin === originParams && destination === destinationParams
+        ? children
+        : 0,
+    infants:
+      origin === originParams && destination === destinationParams
+        ? infants
+        : 0,
+    travelClass:
+      origin === originParams && destination === destinationParams
+        ? travelClass
+        : "ECONOMY",
+    nonStop:
+      origin === originParams && destination === destinationParams
+        ? nonStop
+        : false,
     arrivalAirport: "",
     departureAirport: "",
   };
@@ -33,8 +68,10 @@ const useFlightSearchHook = () => {
   const [originSuggestions, setOriginSuggestions] = useState([]);
   const [destinationSuggestions, setDestinationSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [originValue, setOriginValue] = useState("");
-  const [destionationValue, setDestinationValue] = useState("");
+  const [originValue, setOriginValue] = useState(flightSearchData.origin);
+  const [destionationValue, setDestinationValue] = useState(
+    flightSearchData.destination
+  );
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
 
@@ -196,7 +233,6 @@ const useFlightSearchHook = () => {
     } finally {
       setLoading(false);
     }
-    console.log("successfully filled", flightSearchData);
     setFlightSearchData(initialData);
   };
 
@@ -227,4 +263,4 @@ const useFlightSearchHook = () => {
   };
 };
 
-export default useFlightSearchHook;
+export default useFlightSearchCardHook;

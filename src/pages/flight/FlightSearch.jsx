@@ -4,9 +4,14 @@ import { SelectByDefault } from "../../hoc/DynamicSelect";
 import { FiChevronDown } from "react-icons/fi";
 import DatePicker from "react-datepicker";
 import { CiCalendarDate } from "react-icons/ci";
-import InputField from "./InputField";
+import InputField from "../../hoc/InputField";
 import useFlightSearchHook from "./useFlightSearchHook";
 import SVGPng from "../../assets/illustrator/flightSearch/svg.png";
+import {
+  travelClass,
+  trips,
+  travelers,
+} from "../../constant/FlightSearchConst";
 
 const Search = () => {
   const {
@@ -32,21 +37,7 @@ const Search = () => {
     handleCounterChange,
     error,
   } = useFlightSearchHook();
-  const travelClass = [
-    { label: "Economy", value: "ECONOMY" },
-    { label: "Business", value: "BUSINESS" },
-    { label: "Premium", value: "Premium_Economy" },
-    { label: "First Class", value: "FIRST" },
-  ];
-  const trips = [
-    { label: "One Way", value: "one-way" },
-    { label: "Round Trip", value: "round-trip" },
-  ];
-  const travelers = [
-    { label: "Adults", type: "adults" },
-    { label: "Children", sub: "(2-12)age", type: "children" },
-    { label: "Infants", sub: "(0-2)age", type: "infants" },
-  ];
+
   return (
     <section className="relative z-10 pt-20">
       <div className="absolute top-0 right-0 left-0 -z-50 ">

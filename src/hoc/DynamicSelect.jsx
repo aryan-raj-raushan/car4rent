@@ -41,9 +41,6 @@ export const SelectByDefault = ({
 }) => {
   return (
     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-      {/* <InputLabel id="demo-simple-select-standard-label">
-        {formLabel}
-      </InputLabel> */}
       <Select
         labelId="demo-simple-select-standard-label"
         id="demo-simple-select-standard"
@@ -54,6 +51,31 @@ export const SelectByDefault = ({
       >
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+};
+export const SelectSearch = ({ value, handleChange, label, options, name }) => {
+  return (
+    <FormControl variant="standard" sx={{ minWidth: 60 }}>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={value}
+        onChange={handleChange}
+        label={label}
+        name={name}
+        sx={{ fontSize: 14 }}
+      >
+        {options.map((option) => (
+          <MenuItem
+            key={option.value}
+            value={option.value}
+            sx={{ fontSize: 14 }}
+          >
             {option.label}
           </MenuItem>
         ))}

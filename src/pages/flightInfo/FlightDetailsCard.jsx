@@ -27,13 +27,13 @@ const FlightDetailsCard = ({
   } = useFlightDetailsCardHook({ price, travelDetails });
   return (
     <>
-      {itinerary.segments.length > 0 && (
+      {itinerary.segments && itinerary.segments.length > 0 && (
         <div
           className={`${
             open ? "max-h-[80rem]" : "max-h-0"
           } text-base font-normal font-rubik text-gray-700 transition-all ease-in-out overflow-hidden duration-1000`}
         >
-          {itinerary.segments.map((segment, index) => {
+          {itinerary?.segments.map((segment, index) => {
             const airlineCode = segment.carrierCode;
             const airlineName = carriers[airlineCode];
             const carrierNumber = segment.number;
