@@ -174,7 +174,7 @@ const Search = () => {
                         target: { name: "startDate", value: date },
                       })
                     }
-                    placeholderText="Select Pick-up Date"
+                    placeholderText="Pick-up Date"
                     className="outline-none text-gray-500 text-base cursor-pointer w-36"
                     dateFormat="dd-MM-yyyy"
                     name="startDate"

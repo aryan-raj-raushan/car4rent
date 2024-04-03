@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { format, parseISO } from "date-fns";
-import formatDuration from "../../hoc/FormatedDateDuration";
+import { formatDuration } from "../../hoc/FormatedDateDuration";
 import { getAirportDetails } from "../../services/AirlineDetails";
 const useFlightInfoCardHook = ({ data, dictionaries, itineraries }) => {
   const [open, setOpen] = useState(false);

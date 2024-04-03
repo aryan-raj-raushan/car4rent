@@ -32,6 +32,7 @@ export const DateRangeSelector = ({
   const handleDropOffTIme = (time) => {
     setDropoffTime(time);
   };
+  
 
   return (
     <div className="flex gap-4">
@@ -40,7 +41,6 @@ export const DateRangeSelector = ({
         <DatePicker
           selected={startDate}
           onChange={handleStartDateChange}
-          toggleCalendarOnIconClick
           selectsStart
           startDate={startDate}
           endDate={endDate}
@@ -48,7 +48,6 @@ export const DateRangeSelector = ({
           placeholderText="Pick-up Date"
           className="outline-none text-gray-500 text-base cursor-pointer w-36"
           dateFormat="dd-MM-yyyy"
-          // shouldCloseOnSelect={false}
         />
         {showTime && (
           <div className="border-l pl-2">

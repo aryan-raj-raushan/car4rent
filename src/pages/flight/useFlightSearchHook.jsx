@@ -8,12 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import {flightData} from "../../redux/flightSlice"
 import { format } from "date-fns";
+import { flightData as flightInfoData } from "./data";
 
 const useFlightSearchHook = () => {
   const ref = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {setLoading,setFlightData} = useMyState()
+  const { setLoading, setFlightData } = useMyState();
 
   const initialData = {
     origin: "",
@@ -28,29 +29,27 @@ const useFlightSearchHook = () => {
     nonStop: false,
     arrivalAirport: "",
     departureAirport: "",
-  }
+  };
   const [flightSearchData, setFlightSearchData] = useState(initialData);
-
   const [originSuggestions, setOriginSuggestions] = useState([]);
   const [destinationSuggestions, setDestinationSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [originValue, setOriginValue] = useState("");
   const [destionationValue, setDestinationValue] = useState("");
   const [open, setOpen] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    if (name === 'startDate' || name === 'endDate') {
-      const formattedDate = format(new Date(value), 'yyyy-MM-dd');
+    if (name === "startDate" || name === "endDate") {
       setFlightSearchData((prevState) => ({
         ...prevState,
-        [name]: formattedDate,
+        [name]: value,
       }));
     } else {
       setFlightSearchData((prevState) => ({
         ...prevState,
-        [name]: type === 'checkbox' ? checked : value,
+        [name]: type === "checkbox" ? checked : value,
       }));
     }
   };
@@ -101,13 +100,27 @@ const useFlightSearchHook = () => {
   };
 
   const totalTravelers =
-  flightSearchData.adults +
-  flightSearchData.children +
-  flightSearchData.infants;
+    flightSearchData.adults +
+    flightSearchData.children +
+    flightSearchData.infants;
+
+  const formattedDate = (date) => {
+    return format(date, "yyyy-MM-dd");
+  };
 
   const searchFlight = async () => {
-    const { origin, destination, startDate, endDate, travelType,adults, children,infants,travelClass,nonStop } =
-      flightSearchData;
+    const {
+      origin,
+      destination,
+      startDate,
+      endDate,
+      travelType,
+      adults,
+      children,
+      infants,
+      travelClass,
+      nonStop,
+    } = flightSearchData;
     if (!origin || !destination) {
       toast.error(
         `Please select an ${
@@ -128,33 +141,57 @@ const useFlightSearchHook = () => {
       return;
     }
     setError(null);
-    setLoading(true); 
-    dispatch(flightData(flightSearchData));
+    setLoading(true);
+    const formattedStartDate = formattedDate(startDate);
+    const formattedEndDate =
+      travelType === "round-trip" ? formattedDate(endDate) : null;
+    dispatch(
+      flightData({
+        origin,
+        destination,
+        startDate: formattedStartDate,
+        endDate: formattedEndDate,
+        travelType,
+        adults,
+        children,
+        infants,
+        travelClass,
+        nonStop,
+      })
+    );
     try {
-      const accessToken = await getAccessToken();
-      const url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
-      let params = {
-        originLocationCode: origin,
-        destinationLocationCode: destination,
-        departureDate: startDate,
-        adults: adults,
-        children: children,
-        infants: infants,
-        travelClass: travelClass,
-        nonStop: nonStop,
-        currencyCode: 'INR',
-        max: 250
-      };
-      if (travelType === 'return') {
-        params.returnDate = endDate;
-      }  
-      const headers = {
-        Authorization: `Bearer ${accessToken}`
-      };
-      const response = await axios.get(url, { params, headers });
-      setFlightData([response.data])
-      navigate(`/flightinfo?origin=${origin}&destination=${destination}`);
-      setLoading(false)
+      // const accessToken = await getAccessToken();
+      // const url = "https://test.api.amadeus.com/v2/shopping/flight-offers";
+
+      // let params = {
+      //   originLocationCode: origin,
+      //   destinationLocationCode: destination,
+      //   departureDate: formattedDate(startDate),
+      //   adults: adults,
+      //   children: children,
+      //   infants: infants,
+      //   travelClass: travelClass,
+      //   nonStop: nonStop,
+      //   currencyCode: "INR",
+      //   max: 250,
+      // };
+      // if (travelType === "round-trip") {
+      //   params.returnDate = formattedDate(endDate);
+      // }
+      // const headers = {
+      //   Authorization: `Bearer ${accessToken}`,
+      // };
+      // const response = await axios.get(url, { params, headers });
+      // setFlightData([response.data]);
+      setFlightData(flightInfoData);
+      let url = `/flightinfo?origin=${origin}&destination=${destination}&departure=${formattedDate(
+        startDate
+      )}`;
+      if (travelType === "round-trip" && endDate) {
+        url += `&return=${formattedDate(endDate)}`;
+      }
+      navigate(url);
+      setLoading(false);
     } catch (error) {
       console.error("Error searching flights:", error);
       setError("Error searching flights. Please try again later.");
@@ -163,7 +200,7 @@ const useFlightSearchHook = () => {
     }
     console.log("successfully filled", flightSearchData);
     setFlightSearchData(initialData);
-  }
+  };
 
   useOnClickOutside(ref, handleClose);
 
@@ -188,33 +225,8 @@ const useFlightSearchHook = () => {
     open,
     handlePrevent,
     handleCounterChange,
-    error
+    error,
   };
 };
 
 export default useFlightSearchHook;
-
-
-
- //   const searchFlight = async () => {
-      // setError(null); // Reset error state
-      // try {
-      //   const accessToken = await getAccessToken();
-      //   const response = await axios.get(
-      //     `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${origin}&destinationLocationCode=${destination}&departureDate=${departureDate}&adults=1&max=5`,
-      //     {
-      //       headers: {
-      //         Authorization: `Bearer ${accessToken}`,
-      //       },
-      //     }
-      //   );
-      //   setFlights(response.data.data);
-      // } catch (error) {
-      //   console.error("Error searching flights:", error);
-      //   setError("Error searching flights. Please try again later.");
-  //     }
-    // }
-
-
-
-    // https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=CCU&destinationLocationCode=DEL&departureDate=2024-03-28T14:19:28.000Z&adults=1&children=0&infants=0&travelClass=ECONOMY&nonStop=false&currencyCode=INR&max=250

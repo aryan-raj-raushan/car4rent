@@ -1,5 +1,5 @@
 import React from "react";
-import formatDuration from "../../hoc/FormatedDateDuration";
+import {formatDuration} from "../../hoc/FormatedDateDuration";
 import { format, parseISO } from "date-fns";
 import { BsClockHistory } from "react-icons/bs";
 import LongLayOver from "../../components/Svgs/LongLayOver";
