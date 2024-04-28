@@ -3,7 +3,7 @@ import { IconMail, IconPhoneCall } from "@tabler/icons-react";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-gray-900 text-white py-12 lg:py-24 px-4">
+      <footer className="bg-gray-900 text-white py-12 lg:py-24 px-4 mt-14">
         <div className="Container">
           <div className="footer-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[27fr_21fr_21fr_21fr] gap-8 lg:gap-20 text-left">
             <ul className="footer-content__1 sm:text-left text-center list-none">

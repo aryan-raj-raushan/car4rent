@@ -40,7 +40,7 @@ const Fleet = () => {
                       alt="title-model"
                       width={500}
                       height={500}
-                      className="w-60 sm:w-fit min-w-44 h-full object-contain p-4 hover:rotate-12 hover:scale-125 transition-all duration-300 cursor-pointer"
+                      className="w-60 sm:w-fit min-w-44 h-full object-contain p-4 hover:scale-125 transition-all duration-300 cursor-pointer"
                     />
                     <div className="flex items-center justify-between px-2 mt-2 ">
                       <div className="flex items-center gap-2">

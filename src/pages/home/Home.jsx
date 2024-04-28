@@ -8,7 +8,6 @@ import ChooseUs from "../../components/ChooseUs/ChooseUs";
 import Testimonials from "../../components/Testimonial/Testimonials";
 import Faq from "../../components/Faq/Faq";
 import Download from "../../components/Download-Banner/Download";
-import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
   return (
@@ -19,10 +18,9 @@ const Home = () => {
       <PickCar />
       <Banner />
       <ChooseUs />
-      <Testimonials/>
-      <Faq/>
-      <Download/>
-      <Footer/>
+      <Testimonials />
+      <Faq />
+      <Download />
     </>
   );
 };

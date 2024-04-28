@@ -22,7 +22,7 @@ const FlightSortCard = ({ data, actions }) => {
     handlePriceChange,
     handlePrices,
     handleDurationChange,
-    handleShowAll,
+    handleClearFilter,
   } = actions;
   const stopOptions = [
     { value: 0, label: "Non-stop" },
@@ -44,7 +44,7 @@ const FlightSortCard = ({ data, actions }) => {
         {flightLength !== originalFlightsLength && (
           <p
             className="text-xs font-light text-blue-600 cursor-pointer"
-            onClick={handleShowAll}
+            onClick={handleClearFilter}
           >
             Show all
           </p>

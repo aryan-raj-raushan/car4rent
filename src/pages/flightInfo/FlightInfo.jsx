@@ -5,32 +5,35 @@ import { IoIosArrowRoundUp } from "react-icons/io";
 import useFlightInfoHook from "./useFlightInfoHook";
 import FlightSortCard from "./FlightSortCard";
 import FlightSearchCard from "./FlightSearchCard";
+import WarningSvg from "../../components/Svgs/Warning";
+import { Link } from "react-router-dom";
+// import { flightInfo as flightData } from "./data";
 
 const FlightInfo = () => {
   const { flightData } = useMyState();
   const { data, actions } = useFlightInfoHook(flightData);
   const { flights, sortOrder, selectedCriteria } = data;
-  const { handleClearSort, sortByCriteria } = actions;
+  const { handleClearSort, sortByCriteria, handleClearFilter } = actions;
   const criteriaList = [
     { key: "departure", label: "Departure" },
     { key: "duration", label: "Duration" },
     { key: "arrival", label: "Arrival" },
     { key: "price", label: "Price" },
   ];
-  console.log(flightData);
+  console.log(flightData)
   return (
     <>
       {flightData.length > 0 ? (
         <section className="py-5">
           <div className="Container">
-            <div className="mb-5">
+            <div className="mb-8">
               <FlightSearchCard />
             </div>
             <div className="flex gap-8">
               <FlightSortCard data={data} actions={actions} />
               {/* Flight search data */}
               <div className="max-w-4xl flex gap-6 flex-col w-full flex-1">
-                <ul className="flex items-center text-center gap-4 bg-slate-100 rounded-3xl py-1 text-sm sticky top-28 cursor-pointer z-30 font-poppins font-light">
+                <ul className="flex items-center text-center gap-4 bg-slate-100 rounded-3xl py-1 text-sm sticky top-28  cursor-pointer z-30 font-poppins font-light">
                   <li className="basis-1/6 text-center">Airline</li>
                   {criteriaList.map((criteria, ind) => (
                     <li
@@ -101,7 +104,24 @@ const FlightInfo = () => {
                       );
                     })
                   ) : (
-                    <div key={`no-data-${index}`}>No data found</div>
+                    <div
+                      key={`no-data-${index}`}
+                      className="flex flex-col justify-center items-center min-h-96 gap-1 cursor-default"
+                    >
+                      <WarningSvg />
+                      <h2 className="text-xl font-semibold pt-2 leading-tight text-gray-500">
+                        We couldn't find flights to match your filters
+                      </h2>
+                      <p className="text-gray-500 text-sm">
+                        Please reset your filters to see flights
+                      </p>
+                      <button
+                        className="bg-black px-8 py-2 text-white duration-200 hover:shadow-lg rounded-lg shadow-md mt-4"
+                        onClick={handleClearFilter}
+                      >
+                        Reset Filter
+                      </button>
+                    </div>
                   );
                 })}
               </div>
@@ -109,8 +129,21 @@ const FlightInfo = () => {
           </div>
         </section>
       ) : (
-        <div className="flex justify-center items-center h-full min-h-60">
-          No data found
+        <div className="flex flex-col justify-center items-center min-h-96 gap-1 cursor-default">
+          <WarningSvg />
+          <h2 className="text-xl font-semibold pt-2 leading-tight">
+            Oops! No Results Found
+          </h2>
+          <p className="text-gray-500 text-sm">
+            Sorry, we couldn't find any matching flights. Please try searching
+            with different criteria.
+          </p>
+
+          <Link to={"/flight"}>
+            <button className="bg-orange-400 px-8 py-2 text-white duration-200 hover:bg-orange-500 rounded-lg shadow-md mt-4">
+              Back to Search
+            </button>
+          </Link>
         </div>
       )}
     </>

@@ -93,7 +93,7 @@ const useFlightInfoHook = (data) => {
     }
   };
 
-  const handleShowAll = () => {
+  const handleClearFilter = () => {
     setSelectedStops(null);
     setMaxRange(priceRange.max);
     setDuration([durationRange.min, durationRange.max]);
@@ -189,7 +189,7 @@ const useFlightInfoHook = (data) => {
       handlePriceChange,
       handleStopOptionClick,
       handleStops,
-      handleShowAll,
+      handleClearFilter,
       handleClearSort,
     },
   };

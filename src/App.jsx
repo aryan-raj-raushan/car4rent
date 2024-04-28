@@ -16,6 +16,7 @@ import FlightSearch from "./pages/flight/FlightSearch";
 import FlightInfo from "./pages/flightInfo/FlightInfo";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
               <Route path="login" element={<LoginPage />} />
               <Route path="signup" element={<SignUpPage />} />
             </Routes>
+            <Footer />
           </Sidebar>
           <ToastContainer />
           <ScrollToTop />
